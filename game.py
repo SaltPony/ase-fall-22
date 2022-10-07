@@ -1,4 +1,5 @@
 from itertools import cycle
+import this
 from typing import NamedTuple
 
 class Player(NamedTuple):
@@ -55,6 +56,14 @@ class Game:
         # and that there is no winner yet. Note that non-played cells
         # contain an empty string (i.e. ""). 
         # Use variables no_winner and move_not_played.
+        no_winner= not self._has_winner
+        move_not_played=False;
+
+        for r, row_content in enumerate(self._current_moves):
+            for c, c, _ in enumerate(row_content):
+                if c==col and r==row:
+                    if row_content[c] == "":
+                        move_not_played=True;
         
         return no_winner and move_not_played
 
