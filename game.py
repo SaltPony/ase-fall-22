@@ -78,13 +78,20 @@ class Game:
 
     def is_tied(self):
         """Return True if the game is tied, and False otherwise."""
+        no_winner = not self._has_winner
+        played_moves = (
+            move.label for row in self._current_moves for move in row
+        )
+        return no_winner and all(played_moves)
         # TODO: check whether a tie was reached.
         # There is no winner and all moves have been tried.
 
     def toggle_player(self):
         """Return a toggled player."""
+        self.current_player = next(self._players)
         # TODO: switches self.current_player to the other player.
         # Hint: https://docs.python.org/3/library/functions.html#next
+        self.current_player=next(self._players)
        
     def reset_game(self):
         """Reset the game state to play again."""
